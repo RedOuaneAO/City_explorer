@@ -1,0 +1,5 @@
+
+
+.heading-container img {
+    opacity: 0.5; /* Adjust the value between 0 (fully transparent) and 1 (fully opaque) */
+}

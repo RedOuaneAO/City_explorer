@@ -1,0 +1,9 @@
+.scrolled {
+    background-color: rgb(255, 255, 255) ;
+}
+.scrolled .navbar-nav .nav-link {
+    color: black !important;
+}
+.scrolled .navbar-brand .text-white {
+  color: black !important;
+}
