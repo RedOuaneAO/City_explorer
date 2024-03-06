@@ -16,6 +16,12 @@ import { CityComponent } from './city/city/city.component';
 import { FoodSectionComponent } from './home/food-section/food-section.component';
 import { AboutUsComponent } from './home/about-us/about-us.component';
 import { OurServiceComponent } from './home/our-service/our-service.component';
+import { TopPageComponent } from './city/top-page/top-page.component';
+import { ContributorSectionComponent } from './home/contributor-section/contributor-section.component';
+import { HotelsSectionComponent } from './home/hotels-section/hotels-section.component';
+import { CopyrightComponent } from './shared-component/copyright/copyright.component';
+import { AllCitiesComponent } from './city/all-cities/all-cities.component';
+import { CityDetailsComponent } from './city/city-details/city-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,13 @@ import { OurServiceComponent } from './home/our-service/our-service.component';
     CityComponent,
     FoodSectionComponent,
     AboutUsComponent,
-    OurServiceComponent
+    OurServiceComponent,
+    TopPageComponent,
+    ContributorSectionComponent,
+    HotelsSectionComponent,
+    CopyrightComponent,
+    AllCitiesComponent,
+    CityDetailsComponent
   ],
   imports: [
     BrowserModule,

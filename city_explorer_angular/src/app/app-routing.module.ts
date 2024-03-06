@@ -5,13 +5,15 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { HomeComponent } from './home/home/home.component';
 import { FoodSectionComponent } from './home/food-section/food-section.component';
 import { CityComponent } from './city/city/city.component';
+import { TopPageComponent } from './city/top-page/top-page.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
   {path:'signup' , component:SignupComponent},
   {path:'signin' , component:SigninComponent},
-  {path:'cities' , component:CityComponent},
+  {path:'cities' , component:TopPageComponent},
   {path:'food' , component:FoodSectionComponent},
+  {path:'city' , component:CityComponent},
 ];
 
 @NgModule({
