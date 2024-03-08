@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home/home.component';
 import { NavBarComponent } from './shared-component/nav-bar/nav-bar.component';
@@ -22,6 +22,8 @@ import { HotelsSectionComponent } from './home/hotels-section/hotels-section.com
 import { CopyrightComponent } from './shared-component/copyright/copyright.component';
 import { AllCitiesComponent } from './city/all-cities/all-cities.component';
 import { CityDetailsComponent } from './city/city-details/city-details.component';
+import { AuthInterceptor } from './helpers/interceptors/auth.interceptor';
+import { CommentComponent } from './comment/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { CityDetailsComponent } from './city/city-details/city-details.component
     HotelsSectionComponent,
     CopyrightComponent,
     AllCitiesComponent,
-    CityDetailsComponent
+    CityDetailsComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,15 @@ import { CityDetailsComponent } from './city/city-details/city-details.component
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi : true
+      }
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

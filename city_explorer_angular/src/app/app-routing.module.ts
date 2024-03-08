@@ -6,12 +6,14 @@ import { HomeComponent } from './home/home/home.component';
 import { FoodSectionComponent } from './home/food-section/food-section.component';
 import { CityComponent } from './city/city/city.component';
 import { TopPageComponent } from './city/top-page/top-page.component';
+import { SigninGuard } from './helpers/guards/signin.guard';
+import { AuthGuard } from './helpers/guards/auth.guard';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
   {path:'signup' , component:SignupComponent},
-  {path:'signin' , component:SigninComponent},
-  {path:'cities' , component:TopPageComponent},
+  {path:'signin' , component:SigninComponent,canActivate:[SigninGuard]},
+  {path:'cities' , component:TopPageComponent,canActivate:[AuthGuard]},
   {path:'food' , component:FoodSectionComponent},
   {path:'city' , component:CityComponent},
 ];

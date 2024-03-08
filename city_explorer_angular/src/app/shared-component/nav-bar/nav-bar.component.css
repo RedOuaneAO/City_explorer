@@ -7,3 +7,12 @@
 .scrolled .navbar-brand .text-white {
   color: black !important;
 }
+
+.dropdown:hover > .dropdown-menu{
+  display: block;
+  margin-top: 0.125em;
+  margin-left: 0.125em;
+}
+.dropdown-toggle{
+  background-color: #A7FC52;
+}
