@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CityService {
 
-    List<City> getAll();
-
-    String save(City city);
-
-    String update(City city);
-
-    String deleteCity(City city);
+//    List<City> getAll();
+//
+//    String save(City city);
+//
+//    String update(City city);
+//
+//    String deleteCity(City city);
 }

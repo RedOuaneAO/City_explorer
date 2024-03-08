@@ -10,27 +10,27 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CityServiceImpl implements CityService {
-    private final CityRepository cityRepository;
-    @Override
-    public List<City> getAll() {
-        return cityRepository.findAll();
-    }
-
-    @Override
-    public String save(City city) {
-        cityRepository.save(city);
-        return "successful";
-    }
-
-    @Override
-    public String update(City city) {
-        cityRepository.save(city);
-        return "successful";
-    }
-
-    @Override
-    public String deleteCity(City city) {
-        cityRepository.delete(city);
-        return "successful";
-    }
+//    private final CityRepository cityRepository;
+//    @Override
+//    public List<City> getAll() {
+//        return cityRepository.findAll();
+//    }
+//
+//    @Override
+//    public String save(City city) {
+//        cityRepository.save(city);
+//        return "successful";
+//    }
+//
+//    @Override
+//    public String update(City city) {
+//        cityRepository.save(city);
+//        return "successful";
+//    }
+//
+//    @Override
+//    public String deleteCity(City city) {
+//        cityRepository.delete(city);
+//        return "successful";
+//    }
 }

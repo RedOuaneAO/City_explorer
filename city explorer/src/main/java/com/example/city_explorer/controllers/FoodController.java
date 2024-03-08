@@ -12,23 +12,23 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 @RequiredArgsConstructor
 public class FoodController {
-    private final FoodService foodService ;
-
-
-    @GetMapping("foods")
-    public List<Food> getAll() {
-        return foodService.getAll();
-    }
-    @PostMapping("food")
-    public String save(@RequestBody Food food) {
-        return foodService.save(food);
-    }
-    @PutMapping("foodUpdate")
-    public String updateCity(@RequestBody Food food) {
-        return foodService.update(food);
-    }
-    @DeleteMapping("DeleteFood")
-    public String deleteCity(@RequestBody Food food) {
-        return foodService.deleteCity(food);
-    }
+//    private final FoodService foodService ;
+//
+//
+//    @GetMapping("foods")
+//    public List<Food> getAll() {
+//        return foodService.getAll();
+//    }
+//    @PostMapping("food")
+//    public String save(@RequestBody Food food) {
+//        return foodService.save(food);
+//    }
+//    @PutMapping("foodUpdate")
+//    public String updateCity(@RequestBody Food food) {
+//        return foodService.update(food);
+//    }
+//    @DeleteMapping("DeleteFood")
+//    public String deleteCity(@RequestBody Food food) {
+//        return foodService.deleteCity(food);
+//    }
 }

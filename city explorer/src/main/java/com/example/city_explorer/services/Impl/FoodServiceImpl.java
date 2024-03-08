@@ -12,28 +12,28 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class FoodServiceImpl implements FoodService {
-
-    private final FoodRepository foodRepository;
-    @Override
-    public List<Food> getAll() {
-        return foodRepository.findAll();
-    }
-
-    @Override
-    public String save(Food food) {
-         foodRepository.save(food);
-         return "success";
-    }
-
-    @Override
-    public String update(Food food) {
-        foodRepository.save(food);
-        return "success";
-    }
-
-    @Override
-    public String deleteCity(Food food) {
-        foodRepository.delete(food);
-        return "success";
-    }
+//
+//    private final FoodRepository foodRepository;
+//    @Override
+//    public List<Food> getAll() {
+//        return foodRepository.findAll();
+//    }
+//
+//    @Override
+//    public String save(Food food) {
+//         foodRepository.save(food);
+//         return "success";
+//    }
+//
+//    @Override
+//    public String update(Food food) {
+//        foodRepository.save(food);
+//        return "success";
+//    }
+//
+//    @Override
+//    public String deleteCity(Food food) {
+//        foodRepository.delete(food);
+//        return "success";
+//    }
 }

@@ -11,24 +11,24 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 @RequiredArgsConstructor
 public class CityController {
-
-    private final CityService cityService;
-
-    @GetMapping("Cities")
-    public List<City> getAll() {
-        return cityService.getAll();
-    }
-    @PostMapping("City")
-    public String save(@RequestBody City city) {
-        return cityService.save(city);
-    }
-    @PutMapping("cityUpdate")
-    public String updateCity(@RequestBody City city) {
-        return cityService.update(city);
-    }
-    @DeleteMapping("DeleteCity")
-    public String deleteCity(@RequestBody City city) {
-        return cityService.deleteCity(city);
-    }
+//
+//    private final CityService cityService;
+//
+//    @GetMapping("Cities")
+//    public List<City> getAll() {
+//        return cityService.getAll();
+//    }
+//    @PostMapping("City")
+//    public String save(@RequestBody City city) {
+//        return cityService.save(city);
+//    }
+//    @PutMapping("cityUpdate")
+//    public String updateCity(@RequestBody City city) {
+//        return cityService.update(city);
+//    }
+//    @DeleteMapping("DeleteCity")
+//    public String deleteCity(@RequestBody City city) {
+//        return cityService.deleteCity(city);
+//    }
 
 }

@@ -13,23 +13,23 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 @RequiredArgsConstructor
 public class HotelController {
-    private final HotelService hotelService ;
-
-
-    @GetMapping("foods")
-    public List<Hotel> getAll() {
-        return hotelService.getAll();
-    }
-    @PostMapping("food")
-    public String save(@RequestBody Hotel hotel) {
-        return hotelService.save(hotel);
-    }
-    @PutMapping("foodUpdate")
-    public String updateHotel(@RequestBody Hotel hotel) {
-        return hotelService.update(hotel);
-    }
-    @DeleteMapping("DeleteFood")
-    public String deleteHotel(@RequestBody Hotel hotel) {
-        return hotelService.deleteHotel(hotel);
-    }
+//    private final HotelService hotelService ;
+//
+//
+//    @GetMapping("foods")
+//    public List<Hotel> getAll() {
+//        return hotelService.getAll();
+//    }
+//    @PostMapping("food")
+//    public String save(@RequestBody Hotel hotel) {
+//        return hotelService.save(hotel);
+//    }
+//    @PutMapping("foodUpdate")
+//    public String updateHotel(@RequestBody Hotel hotel) {
+//        return hotelService.update(hotel);
+//    }
+//    @DeleteMapping("DeleteFood")
+//    public String deleteHotel(@RequestBody Hotel hotel) {
+//        return hotelService.deleteHotel(hotel);
+//    }
 }
