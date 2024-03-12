@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import static javax.crypto.Cipher.SECRET_KEY;
-
 @Service
 public class JwtServiceImpl implements JwtService {
-    private static final String SECRET_KEY = "6A335255515654786E676341565752614A586D423679644E65706F31484E4A6E";
+    @Value("${application.security.jwt.secretkey}")
+    private String secretKey;
+    @Value("${application.security.jwt.secretkey.experation}")
+    private Long accessExperation;
+    @Value("${application.security.jwt.secretkey.refreshToken.experation}")
+    private Long refershExperation;
     @Override
     public String extractUsername(String jwtToken) {
         return extractClaim(jwtToken, Claims::getSubject);
@@ -35,7 +39,7 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
@@ -46,11 +50,19 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+     return buildToken(extraClaims,userDetails, accessExperation);
+    }
+    @Override
+    public String generateRefreshToken(UserDetails userDetails) {
+        return buildToken(new HashMap<>(),userDetails, refershExperation);
+    }
+
+    private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails,Long experation){
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + experation))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

@@ -20,6 +20,7 @@ public interface JwtService {
     String generateToken(UserDetails userDetails);
 
     String generateToken(Map<String, Object> extraClaims, UserDetails userDetails);
+    String generateRefreshToken(UserDetails userDetails);
 
     <T> T extractClaim(String token, Function<Claims, T> claimsResolver);
 

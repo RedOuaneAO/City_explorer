@@ -1,20 +1,22 @@
 package com.example.city_explorer.services.Impl;
 
 import com.example.city_explorer.demain.enums.RoleName;
+import com.example.city_explorer.demain.models.RefreshToken;
 import com.example.city_explorer.demain.models.Role;
 import com.example.city_explorer.demain.models.User;
 import com.example.city_explorer.dto.auth.AuthenticateRequest;
 import com.example.city_explorer.dto.auth.AuthenticationResponse;
 import com.example.city_explorer.dto.auth.RegisterRequest;
-import com.example.city_explorer.services.AuthenticationService;
-import com.example.city_explorer.services.JwtService;
-import com.example.city_explorer.services.RoleService;
-import com.example.city_explorer.services.UserService;
+import com.example.city_explorer.services.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +26,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
+    private final RefreshTokenService refreshTokenService;
+    @Value("${application.security.jwt.secretkey.refreshToken.experation}")
+    private Long refershExperation;
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
         Role role =roleService.findByRole(RoleName.USER);
@@ -35,10 +40,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .build();
         var registredUser = userService.save(user);
         var jwtToken = jwtService.generateToken(user);
+        var refershToken = jwtService.generateRefreshToken(user);
         return AuthenticationResponse.builder()
                 .email(registredUser.getEmail())
                 .authorities(user.getRole().getAuthorities().stream().map(grantedAuthority -> grantedAuthority.getAuthority()).toList())
-                .token(jwtToken).build();
+                .token(jwtToken)
+                .refreshToken(refershToken)
+                .build();
     }
 
     @Override
@@ -48,9 +56,26 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         );
         var user = userService.findByEmail(request.getEmail()).orElseThrow(()->new RuntimeException("user doesn't exist"));
         var jwtToken = jwtService.generateToken(user);
+        var refershToken = jwtService.generateRefreshToken(user);
+        saveUserToken(user,refershToken);
         return AuthenticationResponse.builder()
                 .authorities(user.getRole().getAuthorities().stream().map(grantedAuthority -> grantedAuthority.getAuthority()).toList())
                 .email(user.getEmail())
-                .token(jwtToken).build();
+                .token(jwtToken)
+                .refreshToken(refershToken)
+                .build();
+    }
+
+    private void saveUserToken(User user,String refreshToken){
+            var token= RefreshToken.builder()
+                    .refreshToken(refreshToken)
+                    .revoked(false)
+                    .experationDate(Instant.now().plusMillis(refershExperation))
+                    .user(user)
+                    .build();
+            refreshTokenService.save(token);
+    }
+    private void revokeAllUserTokens(User user){
+
     }
 }

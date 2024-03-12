@@ -4,6 +4,7 @@ import com.example.city_explorer.demain.models.User;
 import com.example.city_explorer.repositories.UserRepository;
 import com.example.city_explorer.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,5 +20,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String userEmail) {
+        return userRepository.findByEmail(userEmail).orElseThrow(()->new RuntimeException("this email doesn't exist"));
     }
 }
