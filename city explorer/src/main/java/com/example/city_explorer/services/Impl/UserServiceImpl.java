@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,5 +26,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String userEmail) {
         return userRepository.findByEmail(userEmail).orElseThrow(()->new RuntimeException("this email doesn't exist"));
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 }

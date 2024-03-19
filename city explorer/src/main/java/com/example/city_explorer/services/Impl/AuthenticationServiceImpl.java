@@ -33,6 +33,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) {
         Role role =roleService.findByRole(RoleName.USER);
         var user = User.builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
                 .nationality(request.getNationality())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))

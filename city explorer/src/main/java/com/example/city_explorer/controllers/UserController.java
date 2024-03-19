@@ -6,10 +6,9 @@ import com.example.city_explorer.dto.auth.RegisterRequest;
 import com.example.city_explorer.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
@@ -17,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
-
-
+    @GetMapping("users")
+    public List<User> getAll(){
+        return userService.getAll();
+    }
 
 }

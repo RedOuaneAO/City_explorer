@@ -16,11 +16,11 @@ public class City {
     private Long id;
     private String name;
     private String description;
-    @OneToMany
-    private List<Food> foodList;
-    @OneToMany
-    private List<Hotel> hotels;
-    @OneToMany
-    private List<Comment> comments;
+//    @OneToMany
+//    private List<Food> foodList;
+//    @OneToMany
+//    private List<Hotel> hotels;
+//    @OneToMany
+//    private List<Comment> comments;
 
 }
