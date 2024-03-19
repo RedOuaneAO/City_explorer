@@ -40,5 +40,15 @@ public class FoodServiceImpl implements FoodService {
     public Food findById(Long id){
         return foodRepository.findById(id).orElseThrow(()->new RuntimeException("there is know food with this is "+ id));
     }
+    @Override
+    public List<Food> getFoodByCity(Long cityId) {
+        City city = cityService.findById(cityId);
+        List<Food> foodList = foodRepository.findByCity(city);
+        return foodList;
+    }
+    @Override
+    public List<Food> getAllFood(){
+        return foodRepository.findAll();
+    }
 
 }

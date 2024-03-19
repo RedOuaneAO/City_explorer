@@ -19,4 +19,9 @@ public class FoodController {
         return foodService.save(food);
     }
 
+    @GetMapping("food")
+    public List<Food> getAllFood(){
+        return foodService.getAllFood();
+    }
+
 }

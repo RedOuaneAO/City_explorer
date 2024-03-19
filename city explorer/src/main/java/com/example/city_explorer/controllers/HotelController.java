@@ -11,26 +11,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/")
 @RequiredArgsConstructor
 public class HotelController {
     private final HotelService hotelService ;
-
-
-    @GetMapping("foods")
+    @GetMapping("hotels")
     public List<Hotel> getAll() {
         return hotelService.getAll();
     }
-    @PostMapping("food")
+    @PostMapping("hotel")
     public String save(@RequestBody HotelAddRequest hotel) {
         return hotelService.save(hotel);
     }
-    @PutMapping("foodUpdate")
+    @PutMapping("hotelUpdate")
     public String updateHotel(@RequestBody Hotel hotel) {
         return hotelService.update(hotel);
     }
-    @DeleteMapping("DeleteFood")
+    @DeleteMapping("DeleteHotel")
     public String deleteHotel(@RequestBody Hotel hotel) {
         return hotelService.deleteHotel(hotel);
+    }
+    @GetMapping("cityHotels/{id}")
+    public List<Hotel> getHotelsByCity( @PathVariable Long id) {
+        return hotelService.getHotelsByCity(id);
     }
 }

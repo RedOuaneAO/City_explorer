@@ -1,5 +1,6 @@
 package com.example.city_explorer.services;
 
+import com.example.city_explorer.demain.models.City;
 import com.example.city_explorer.demain.models.Hotel;
 import com.example.city_explorer.dto.hotel.HotelAddRequest;
 
@@ -14,4 +15,6 @@ public interface HotelService {
     List<Hotel> getAll();
 
     String deleteHotel(Hotel hotel);
+
+    List<Hotel> getHotelsByCity(Long cityId);
 }
