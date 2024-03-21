@@ -24,6 +24,7 @@ import { AllCitiesComponent } from './city/all-cities/all-cities.component';
 import { CityDetailsComponent } from './city/city-details/city-details.component';
 import { AuthInterceptor } from './helpers/interceptors/auth.interceptor';
 import { CommentComponent } from './comment/comment/comment.component';
+import { MyProfileComponent } from './account/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CommentComponent } from './comment/comment/comment.component';
     AllCitiesComponent,
     CityDetailsComponent,
     CommentComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,

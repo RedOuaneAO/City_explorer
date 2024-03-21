@@ -8,6 +8,7 @@ import { CityComponent } from './city/city/city.component';
 import { TopPageComponent } from './city/top-page/top-page.component';
 import { SigninGuard } from './helpers/guards/signin.guard';
 import { AuthGuard } from './helpers/guards/auth.guard';
+import { MyProfileComponent } from './account/my-profile/my-profile.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'cities' , component:TopPageComponent,canActivate:[AuthGuard]},
   {path:'food' , component:FoodSectionComponent},
   {path:'city' , component:CityComponent},
+  {path:'profile' , component:MyProfileComponent},
 ];
 
 @NgModule({

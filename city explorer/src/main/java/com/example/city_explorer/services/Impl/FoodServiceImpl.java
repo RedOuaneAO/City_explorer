@@ -31,14 +31,13 @@ public class FoodServiceImpl implements FoodService {
          foodRepository.save(food1);
          return "success";
     }
-
     @Override
     public List<Food> findAll(List<Long> foodIds) {
         return foodIds.stream().map(aLong -> findById(aLong)).toList();
     }
 
     public Food findById(Long id){
-        return foodRepository.findById(id).orElseThrow(()->new RuntimeException("there is know food with this is "+ id));
+        return foodRepository.findById(id).orElseThrow(()->new RuntimeException("there is no food with this is "+ id));
     }
     @Override
     public List<Food> getFoodByCity(Long cityId) {
