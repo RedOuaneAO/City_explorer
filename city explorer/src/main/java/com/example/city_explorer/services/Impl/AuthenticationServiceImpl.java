@@ -57,6 +57,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 new UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword())
         );
         var user = userService.findByEmail(request.getEmail()).orElseThrow(()->new RuntimeException("user doesn't exist"));
+        refreshTokenService.deleteOldToken(user);
         var jwtToken = jwtService.generateToken(user);
         var refershToken = jwtService.generateRefreshToken(user);
         saveUserToken(user,refershToken);
@@ -77,7 +78,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .build();
             refreshTokenService.save(token);
     }
-    private void revokeAllUserTokens(User user){
+    private void logOut(User user){
 
     }
 }

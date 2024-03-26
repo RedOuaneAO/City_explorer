@@ -11,6 +11,8 @@ export class AuthService {
   constructor(private http : HttpClient) { }
   authenticate(userData:any):Observable<any>{
     return this.http.post(environment.apiURL+'auth/authenticate',userData);
-}
-
+  }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

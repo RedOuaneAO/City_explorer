@@ -1,6 +1,6 @@
-package com.example.city_explorer.handler;
+package com.example.city_explorer.services.handler;
 
-import com.example.city_explorer.handler.customExceptions.UserNotFoundException;
+import com.example.city_explorer.services.handler.customExceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

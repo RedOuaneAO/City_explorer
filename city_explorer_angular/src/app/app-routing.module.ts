@@ -10,6 +10,7 @@ import { SigninGuard } from './helpers/guards/signin.guard';
 import { AuthGuard } from './helpers/guards/auth.guard';
 import { MyProfileComponent } from './account/my-profile/my-profile.component';
 import { EditeProfileComponent } from './account/edite-profile/edite-profile.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'city' , component:CityComponent},
   {path:'profile' , component:MyProfileComponent},
   {path:'editeProfile' , component:EditeProfileComponent},
+  {path:'dashboard' , component:DashboardComponent},
 ];
 
 @NgModule({

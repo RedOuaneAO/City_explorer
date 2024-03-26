@@ -16,4 +16,6 @@ public interface UserService {
     UserDetails loadUserByUsername(String userEmail);
 
     List<User> getAll();
+
+    User getUserByUserName(String token);
 }

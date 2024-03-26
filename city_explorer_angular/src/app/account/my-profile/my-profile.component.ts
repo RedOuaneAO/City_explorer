@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './my-profile.component.css'
 })
 export class MyProfileComponent {
-
+  activeTab: string = 'cities'; 
+    
+  showCities() {
+      this.activeTab = 'cities';
+  }
+  showHotels() {
+      this.activeTab = 'hotels';
+  }
+  showFood() {
+      this.activeTab = 'food';
+  }
 }

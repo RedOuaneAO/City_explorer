@@ -20,5 +20,9 @@ public class UserController {
     public List<User> getAll(){
         return userService.getAll();
     }
+    @GetMapping("users/{token}")
+    public User getUserByUserName(@PathVariable("token") String token){
+        return userService.getUserByUserName(token);
+    }
 
 }

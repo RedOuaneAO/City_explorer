@@ -1,6 +1,7 @@
 package com.example.city_explorer.services.Impl;
 
 import com.example.city_explorer.demain.models.RefreshToken;
+import com.example.city_explorer.demain.models.User;
 import com.example.city_explorer.dto.auth.AuthenticationResponse;
 import com.example.city_explorer.dto.auth.RefreshTokenRequest;
 import com.example.city_explorer.dto.auth.RefreshTokenResponse;
@@ -43,5 +44,11 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     @Override
     public void save(RefreshToken token) {
         refreshTokenRepository.save(token);
+    }
+
+    @Override
+    public void deleteOldToken(User user) {
+      var refreshToken= refreshTokenRepository.findByUser(user);
+      refreshTokenRepository.delete(refreshToken);
     }
 }

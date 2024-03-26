@@ -1,6 +1,7 @@
 package com.example.city_explorer.services;
 
 import com.example.city_explorer.demain.models.RefreshToken;
+import com.example.city_explorer.demain.models.User;
 import com.example.city_explorer.dto.auth.RefreshTokenRequest;
 import com.example.city_explorer.dto.auth.RefreshTokenResponse;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,4 +12,6 @@ import org.springframework.stereotype.Service;
 public interface RefreshTokenService {
     RefreshTokenResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
     void save(RefreshToken token);
+
+    void deleteOldToken(User id);
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Token } from '@angular/compiler';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,8 +11,6 @@ export class SigninComponent {
   loginForm:any={};
   errorMessage:String = "";
   constructor(private authService : AuthService,private router:Router){}
-
-
 
   loing(){
      console.log(this.loginForm);

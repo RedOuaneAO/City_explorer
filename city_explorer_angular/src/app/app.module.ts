@@ -26,6 +26,10 @@ import { AuthInterceptor } from './helpers/interceptors/auth.interceptor';
 import { CommentComponent } from './comment/comment/comment.component';
 import { MyProfileComponent } from './account/my-profile/my-profile.component';
 import { EditeProfileComponent } from './account/edite-profile/edite-profile.component';
+import { FavoriteCitiesComponent } from './city/favorite-cities/favorite-cities.component';
+import { FavoriteHotelsComponent } from './hotel/favorite-hotels/favorite-hotels.component';
+import { FavoriteFoodComponent } from './food/favorite-food/favorite-food.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import { EditeProfileComponent } from './account/edite-profile/edite-profile.com
     CommentComponent,
     MyProfileComponent,
     EditeProfileComponent,
+    FavoriteCitiesComponent,
+    FavoriteHotelsComponent,
+    FavoriteFoodComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
