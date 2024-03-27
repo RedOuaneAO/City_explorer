@@ -12,7 +12,4 @@ export class AuthService {
   authenticate(userData:any):Observable<any>{
     return this.http.post(environment.apiURL+'auth/authenticate',userData);
   }
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
-  }
 }

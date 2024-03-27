@@ -12,18 +12,34 @@ export class EditeProfileComponent {
   token:String | null="";
   userInfo:any ={};
   oldPassword :String="";
+  selectedFile!: File;
   constructor(private accountService :AccountService,private router:Router){}
 
   ngOnInit(){
     this.token = localStorage.getItem("token");
     this.accountService.getUser(this.token).subscribe((data)=>{
       this.userInfo = data
-      console.log(this.userInfo.firstName);
     },(error)=>{
-      console.log("the user doesn't exist");
+      console.log(error);
       
     })
   }
+
+  onFileSelected(event:any) {
+    this.selectedFile = event.target.files[0];    
+  }
+
+  imageUpload(): void {
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
+    this.accountService.uploadImage(formData).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+
+
+  
   updateProfile(){
       Swal.fire({
         title: "Are you sure?",
