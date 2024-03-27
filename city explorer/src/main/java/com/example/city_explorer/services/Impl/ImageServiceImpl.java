@@ -23,15 +23,11 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public ResponseEntity<Map> uploadImage(ImageDto imageDto) {
         try {
-            if (imageDto.getName().isEmpty()) {
-                return ResponseEntity.badRequest().build();
-            }
             if (imageDto.getFile().isEmpty()) {
                 return ResponseEntity.badRequest().build();
             }
-            Image image = new Image();
-            image.setImageName(imageDto.getName());
-            image.setImageUrl(cloudinaryService.uploadFile(imageDto.getFile(), "folder_1"));
+            System.out.println(imageDto.getFile());
+            Image image = Image.builder().ImageUrl(cloudinaryService.uploadFile(imageDto.getFile(), "folder_1")).build();
             if(image.getImageUrl() == null) {
                 return ResponseEntity.badRequest().build();
             }
@@ -41,7 +37,5 @@ public class ImageServiceImpl implements ImageService {
             e.printStackTrace();
             return null;
         }
-
-
     }
 }
