@@ -7,7 +7,7 @@
 				<hr>
 			</div>
 			<!-- Form START -->
-			<form class="file-upload ">
+			<form class="file-upload " (ngSubmit)="updateProfile()"  enctype="multipart/form-data">
 				<div class="row mb-5 gx-5">
 					<!-- Contact detail -->
 					<div class="col-xxl-8 mb-5 mb-xxl-0">
@@ -48,11 +48,11 @@
 										<img src="https://res.cloudinary.com/dcd2gzr5x/image/upload/v1/folder_1/boqjxxg5sqnbglns1w3t" style="width:100%; height:100%; object-fit: cover;" class=" position-absolute top-50 start-50 translate-middle" alt="">
 									</div>
 									<!-- Button -->
-									<form (ngSubmit)="imageUpload()" enctype="multipart/form-data">
+									<!-- <form (ngSubmit)="imageUpload()" enctype="multipart/form-data"> -->
 										<input type="file" id="customFile" name="file" hidden=""  (change)="onFileSelected($event)">
 										<label class="btn btn-success-soft btn-block" for="customFile">Upload</label>
-										<button type="submit" class="btn btn-danger-soft">save</button>
-									</form>
+										<!-- <button type="submit" class="btn btn-danger-soft">save</button>
+									</form> -->
 									<!-- Content -->
 									<p class="text-muted mt-3 mb-0"><span class="me-1"><b>Note:</b></span>Minimum size 300px x 300px</p>
 								</div>

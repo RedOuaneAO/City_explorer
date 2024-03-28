@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'food' , component:FoodSectionComponent},
   {path:'city' , component:CityComponent},
   {path:'profile' , component:MyProfileComponent},
-  {path:'editeProfile' , component:EditeProfileComponent},
+  {path:'editeProfile' , component:EditeProfileComponent,canActivate:[AuthGuard]},
   {path:'dashboard' , component:DashboardComponent},
 ];
 

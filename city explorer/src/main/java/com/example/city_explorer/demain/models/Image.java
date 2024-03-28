@@ -16,6 +16,11 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String ImageUrl;
+    @ManyToOne
+    private City city;
+    @ManyToOne
+    private Food food;
+    @ManyToOne
+    private Hotel hotel;
 }

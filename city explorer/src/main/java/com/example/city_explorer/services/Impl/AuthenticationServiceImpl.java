@@ -16,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -27,11 +26,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
     private final RefreshTokenService refreshTokenService;
+    private final ImageService imageService;
     @Value("${application.security.jwt.secretkey.refreshToken.experation}")
     private Long refershExperation;
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
         Role role =roleService.findByRole(RoleName.USER);
+
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -50,6 +51,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .refreshToken(refershToken)
                 .build();
     }
+
 
     @Override
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
@@ -71,6 +73,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .refreshToken(refershToken)
                 .build();
     }
+
+
 
     private void saveUserToken(User user,String refreshToken){
             var token= RefreshToken.builder()

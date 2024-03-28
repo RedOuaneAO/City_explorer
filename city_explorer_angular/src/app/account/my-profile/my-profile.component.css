@@ -11,3 +11,45 @@
     color: #5d87ff;
     border-bottom: 2px solid #5d87ff;
 }
+
+
+
+
+
+.nav-tabs:not(.nav-tabs-neutral)>.nav-item>.nav-link.active {
+    box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.3);
+}
+
+
+.nav-tabs>.nav-item>.nav-link {
+    color: #888888;
+    margin: 0;
+    margin-right: 5px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    font-size: 14px;
+    padding: 11px 23px;
+    line-height: 1.5;
+}
+
+.nav-tabs>.nav-item>.nav-link.active {
+    background-color: #34dc2e;
+    border-radius: 30px;
+    color: #FFFFFF;
+}
+
+.tabs{
+    border: 0;
+    margin-top: 20px;
+    
+}
+/* .card {
+    border: 0;
+    border-radius: 0.1875rem;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+} */

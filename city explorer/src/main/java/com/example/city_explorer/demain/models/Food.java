@@ -3,6 +3,8 @@ package com.example.city_explorer.demain.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,4 +18,6 @@ public class Food {
     private String description;
     @ManyToOne
     private City city;
+    @OneToMany
+    private List<Image> images;
 }

@@ -1,6 +1,8 @@
 package com.example.city_explorer.services;
 
 import com.example.city_explorer.demain.models.User;
+import com.example.city_explorer.dto.user.UpdateProfileRequest;
+import jakarta.servlet.ServletRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +20,7 @@ public interface UserService {
     List<User> getAll();
 
     User getUserByUserName(String token);
+
+
+    void updateProfile(UpdateProfileRequest profileRequest, ServletRequest request);
 }

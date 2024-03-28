@@ -1,9 +1,11 @@
 package com.example.city_explorer.services.Impl;
 
 import com.example.city_explorer.demain.models.User;
+import com.example.city_explorer.dto.user.UpdateProfileRequest;
 import com.example.city_explorer.repositories.UserRepository;
 import com.example.city_explorer.services.JwtService;
 import com.example.city_explorer.services.UserService;
+import jakarta.servlet.ServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -40,5 +42,10 @@ public class UserServiceImpl implements UserService {
         String email=jwtService.extractUsername(token);
         User user = userRepository.findByEmail(email).orElseThrow(()->new RuntimeException("This user doesn't exist"));
         return user;
+    }
+
+    @Override
+    public void updateProfile(UpdateProfileRequest profileRequest, ServletRequest request) {
+
     }
 }
