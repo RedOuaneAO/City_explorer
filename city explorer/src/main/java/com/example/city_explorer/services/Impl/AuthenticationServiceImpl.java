@@ -32,7 +32,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
         Role role =roleService.findByRole(RoleName.USER);
-
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
