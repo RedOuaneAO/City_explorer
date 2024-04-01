@@ -30,6 +30,7 @@ import { FavoriteCitiesComponent } from './city/favorite-cities/favorite-cities.
 import { FavoriteHotelsComponent } from './hotel/favorite-hotels/favorite-hotels.component';
 import { FavoriteFoodComponent } from './food/favorite-food/favorite-food.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewCityComponent } from './city/new-city/new-city.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FavoriteHotelsComponent,
     FavoriteFoodComponent,
     DashboardComponent,
+    NewCityComponent,
   ],
   imports: [
     BrowserModule,

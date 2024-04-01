@@ -1,0 +1,37 @@
+
+<div class=" d-flex justify-content-center pt-5" style="background: linear-gradient(180deg, rgba(198,235,161,1) 60%, rgba(255,255,255,1) 100%);">
+    <section class="vh-100">
+        <div class="card bg-dark text-white shadow" style="border-radius: 30px; width: 700px; margin-top: 70px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+            <div class="card-body p-5 text-center">
+                <h2 class="fw-bold mb-2">ADD CITY</h2>
+                <p class="text-white-50 mb-5">Fill the form</p>
+                <form (ngSubmit)="addCity()" enctype="multipart/form-data">
+                    <div class="d-flex justify-content-center gap-3">
+                        <div>
+                            <div class=" form-white mb-4">
+                                <label class="form-label" for="firstName">City Name</label>
+                                <input type="email" id="firstName" class="form-control " name="name" [(ngModel)]="cityInfo.name" placeholder="City Name"/>
+                            </div>
+                            <div class="form-white mb-4">
+                                <label for="cityImages">Images</label>
+                                <input type="file" id="cityImages" name="images" class="form-control" placeholder="Images" multiple (change)="onFileSelected($event)"/>
+                            </div>
+                            
+                        </div>
+                        <div>
+                
+                            <div class=" form-white mb-4">
+                                <label class="form-label" for="lastName">City Description</label>
+                                <input type="email" id="lastName" class="form-control" name="description" [(ngModel)]="cityInfo.description" placeholder="Description"/>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <p class="small mb-3">I already have an account?<a class="text-white-50 ms-1" routerLink="/signin">Signin</a></p>
+        
+                    <button class="btn btn-outline-light btn-lg px-5" type="submit">add</button>
+                </form>
+            </div>
+        </div>
+      </section>
+</div>

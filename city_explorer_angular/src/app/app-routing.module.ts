@@ -11,6 +11,7 @@ import { AuthGuard } from './helpers/guards/auth.guard';
 import { MyProfileComponent } from './account/my-profile/my-profile.component';
 import { EditeProfileComponent } from './account/edite-profile/edite-profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewCityComponent } from './city/new-city/new-city.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'profile' , component:MyProfileComponent},
   {path:'editeProfile' , component:EditeProfileComponent,canActivate:[AuthGuard]},
   {path:'dashboard' , component:DashboardComponent},
+  {path:'addCity' , component:NewCityComponent},
 ];
 
 @NgModule({

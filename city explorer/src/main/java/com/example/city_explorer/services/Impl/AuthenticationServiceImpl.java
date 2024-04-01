@@ -54,15 +54,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
-        System.out.println(request);
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword())
         );
         var user = userService.findByEmail(request.getEmail()).orElseThrow(()->new RuntimeException("user doesn't exist"));
-        System.out.println(user);
         refreshTokenService.deleteOldToken(user);
         var jwtToken = jwtService.generateToken(user);
-        System.out.println(jwtToken);
         var refershToken = jwtService.generateRefreshToken(user);
         saveUserToken(user,refershToken);
         return AuthenticationResponse.builder()

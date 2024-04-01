@@ -21,6 +21,7 @@ public class AuthenticationController {
 
     @PostMapping("authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticateRequest request) {
+        System.out.println(request);
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
     @PostMapping("refreshToken")

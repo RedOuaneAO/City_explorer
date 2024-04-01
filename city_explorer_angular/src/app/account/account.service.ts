@@ -14,7 +14,6 @@ export class AccountService {
     return this.http.get(environment.apiURL+'users/'+token);
   }
   uploadImage(imageDetails:any):Observable<any>{
-    console.log("this is the service ",imageDetails);    
     return this.http.post(environment.apiURL+'upload',imageDetails);
   }
 

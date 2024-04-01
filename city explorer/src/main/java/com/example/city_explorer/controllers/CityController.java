@@ -31,10 +31,11 @@ public class CityController {
         return cityService.deleteCity(cityId);
     }
 
-    @PostMapping("/addcity")
+    @PostMapping("addcity")
     public  ResponseEntity<CityResponse> saveCity(@RequestParam("name") String name,
                                                   @RequestParam("description") String description,
                                                   @RequestParam("images") List<MultipartFile> imageFiles) {
+        System.out.println(imageFiles);
 
         // Convert MultipartFile to ImageDto objects
         List<ImageDto> images = imageFiles.stream()
