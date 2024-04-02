@@ -5,6 +5,7 @@ import com.example.city_explorer.dto.city.CityAddRequest;
 import com.example.city_explorer.dto.city.CityResponse;
 import com.example.city_explorer.dto.image.ImageDto;
 import com.example.city_explorer.services.CityService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,8 @@ public class CityController {
     }
 
     @PostMapping("addcity")
-    public  ResponseEntity<CityResponse> saveCity(@RequestParam("name") String name,
+    public  ResponseEntity<CityResponse> saveCity(@Valid @RequestParam("name") String name,
+                                                  @Valid
                                                   @RequestParam("description") String description,
                                                   @RequestParam("images") List<MultipartFile> imageFiles) {
         // Convert MultipartFile to ImageDto objects

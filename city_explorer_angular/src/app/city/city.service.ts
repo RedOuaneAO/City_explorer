@@ -13,5 +13,8 @@ export class CityService {
   addNewCity(cityInfo:any):Observable<any>{
       return this.http.post(environment.apiURL+'addcity',cityInfo)
   }
+  getAllCities():Observable<any>{
+    return this.http.get(environment.apiURL+'cities')
+  }
 
 }

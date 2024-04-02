@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CityService } from '../city.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-city',
@@ -10,12 +12,12 @@ export class NewCityComponent {
   selectedFiles: FileList | null = null;
   cityInfo: any = {};
   carouselImages: string[] = [];
-  loading = false; // Flag to track loading state
+  loading = false; 
 
-  constructor(private cityService: CityService) { }
+  constructor(private cityService: CityService,private router :Router) { }
 
   addCity() {
-    this.loading = true; // Set loading to true when submitting form
+    this.loading = true; 
     const formData = new FormData();
     if (this.selectedFiles) {
       for (let i = 0; i < this.selectedFiles.length; i++) {
@@ -26,10 +28,23 @@ export class NewCityComponent {
     formData.append('description', this.cityInfo.description);
     this.cityService.addNewCity(formData).subscribe(data => {
       console.log(data);
-      this.loading = false; // Set loading to false when request completes
+      Swal.fire({
+        icon: "success",
+        title: "The City has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.loading = false;
+      this.router.navigate(['/cities'])
     }, error => {
       console.log(error);
-      this.loading = false; // Set loading to false in case of error
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong! Please try again",
+        timer: 1500
+      });
+      this.loading = false; 
     });
   }
 
