@@ -1,37 +1,49 @@
-
-<div class=" d-flex justify-content-center pt-5" style="background: linear-gradient(180deg, rgba(198,235,161,1) 60%, rgba(255,255,255,1) 100%);">
-    <section class="vh-100">
-        <div class="card bg-dark text-white shadow" style="border-radius: 30px; width: 700px; margin-top: 70px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-            <div class="card-body p-5 text-center">
-                <h2 class="fw-bold mb-2">ADD CITY</h2>
-                <p class="text-white-50 mb-5">Fill the form</p>
-                <form (ngSubmit)="addCity()" enctype="multipart/form-data">
-                    <div class="d-flex justify-content-center gap-3">
-                        <div>
-                            <div class=" form-white mb-4">
-                                <label class="form-label" for="firstName">City Name</label>
-                                <input type="email" id="firstName" class="form-control " name="name" [(ngModel)]="cityInfo.name" placeholder="City Name"/>
-                            </div>
-                            <div class="form-white mb-4">
-                                <label for="cityImages">Images</label>
-                                <input type="file" id="cityImages" name="images" class="form-control" placeholder="Images" multiple (change)="onFileSelected($event)"/>
-                            </div>
-                            
-                        </div>
-                        <div>
-                
-                            <div class=" form-white mb-4">
-                                <label class="form-label" for="lastName">City Description</label>
-                                <input type="email" id="lastName" class="form-control" name="description" [(ngModel)]="cityInfo.description" placeholder="Description"/>
+<div class="container pt-5 mt-5">
+    <div *ngIf="loading" class="text-center">
+        <i class="fa fa-spinner fa-spin"></i> 
+        <p>Loading...</p>
+    </div>      
+    <div class="card shadow my-4">
+        <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+                <div class="p-3 rounded"> 
+                    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel" *ngIf="carouselImages.length > 0">
+                        <div class="carousel-inner">
+                            <div *ngFor="let image of carouselImages; let i = index" class="carousel-item" [class.active]="i === 0">
+                                <img [src]="image" class="d-block w-100" alt="Selected Image">
                             </div>
                         </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
                     </div>
-        
-                    <p class="small mb-3">I already have an account?<a class="text-white-50 ms-1" routerLink="/signin">Signin</a></p>
-        
-                    <button class="btn btn-outline-light btn-lg px-5" type="submit">add</button>
-                </form>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card-body p-md-5 text-black">
+                    <form (ngSubmit)="addCity()" enctype="multipart/form-data">
+                        <h3 class="mb-5 text-uppercase">Add new City</h3>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="cityName">Name</label>
+                            <input type="text" id="cityName" class="form-control" name="name" [(ngModel)]="cityInfo.name" placeholder="City Name">
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="description">Description</label>
+                            <textarea type="text" id="description" class="form-control " name="description" [(ngModel)]="cityInfo.description" placeholder="Description" ></textarea>
+                        </div>
+                        <div class="form-outline mb-4">
+                            <input type="file" id="cityImages" name="images" class="form-control " placeholder="Images" multiple (change)="onFileSelected($event)" >
+                        </div>
+                        <div class="d-flex justify-content-end pt-3">
+                            <button class="btn btn-outline-success btn-lg px-5" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-      </section>
+    </div>
 </div>
+  

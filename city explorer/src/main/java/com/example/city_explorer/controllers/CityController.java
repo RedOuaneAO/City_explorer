@@ -35,8 +35,6 @@ public class CityController {
     public  ResponseEntity<CityResponse> saveCity(@RequestParam("name") String name,
                                                   @RequestParam("description") String description,
                                                   @RequestParam("images") List<MultipartFile> imageFiles) {
-        System.out.println(imageFiles);
-
         // Convert MultipartFile to ImageDto objects
         List<ImageDto> images = imageFiles.stream()
                 .map(file -> ImageDto.builder().file(file).build())
