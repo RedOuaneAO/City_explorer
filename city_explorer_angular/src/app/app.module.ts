@@ -31,6 +31,8 @@ import { FavoriteHotelsComponent } from './hotel/favorite-hotels/favorite-hotels
 import { FavoriteFoodComponent } from './food/favorite-food/favorite-food.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewCityComponent } from './city/new-city/new-city.component';
+import { AllFoodComponent } from './food/all-food/all-food.component';
+import { AllFoodTopPageComponent } from './food/all-food-top-page/all-food-top-page.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { NewCityComponent } from './city/new-city/new-city.component';
     FavoriteFoodComponent,
     DashboardComponent,
     NewCityComponent,
+    AllFoodComponent,
+    AllFoodTopPageComponent,
   ],
   imports: [
     BrowserModule,

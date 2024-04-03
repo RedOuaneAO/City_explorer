@@ -12,8 +12,8 @@ COPY . .
 
 RUN ng build --configuration=production
 
-# FROM nginx:latest
+FROM nginx:latest
 
-# COPY --from=build app/dist/city-explorer-angular/browser /usr/share/nginx/html
+COPY --from=build app/dist/city_explorer_angular/browser /usr/share/nginx/html
 
 EXPOSE 80
