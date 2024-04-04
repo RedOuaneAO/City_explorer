@@ -21,12 +21,29 @@ public class ImageServiceImpl implements ImageService {
 
 
     @Override
+    public Image uploadImage2(ImageDto image) {
+        try {
+            if (image.getFile().isEmpty()) {
+               throw new RuntimeException("no image selected");
+            }
+            Image imagee = Image.builder().imageUrl(cloudinaryService.uploadFile(image.getFile(), "folder_1")).build();
+            if(imagee.getImageUrl() == null) {
+               throw new RuntimeException("Internal server error. Please try again later.");
+            }
+            imageRepository.save(imagee);
+            return imagee;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    @Override
     public ResponseEntity<Map> uploadImage(ImageDto imageDto) {
         try {
             if (imageDto.getFile().isEmpty()) {
                 return ResponseEntity.badRequest().build();
             }
-            Image image = Image.builder().ImageUrl(cloudinaryService.uploadFile(imageDto.getFile(), "folder_1")).build();
+            Image image = Image.builder().imageUrl(cloudinaryService.uploadFile(imageDto.getFile(), "folder_1")).build();
             if(image.getImageUrl() == null) {
                 return ResponseEntity.badRequest().build();
             }
@@ -38,21 +55,4 @@ public class ImageServiceImpl implements ImageService {
         }
     }
 
-    @Override
-    public Image uploadImage2(ImageDto image) {
-        try {
-            if (image.getFile().isEmpty()) {
-               throw new RuntimeException("no file");
-            }
-            Image imagee = Image.builder().ImageUrl(cloudinaryService.uploadFile(image.getFile(), "folder_1")).build();
-            if(imagee.getImageUrl() == null) {
-               throw new RuntimeException("no url");
-            }
-            imageRepository.save(imagee);
-            return imagee;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

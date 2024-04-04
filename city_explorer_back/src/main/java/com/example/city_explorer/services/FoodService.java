@@ -12,7 +12,7 @@ public interface FoodService {
 
     List<Food> findAll(List<Long> foodIds);
 
-    List<Food> getFoodByCity(Long cityId);
+//    List<Food> getFoodByCity(Long cityId);
 
     List<Food> getAllFood();
 }

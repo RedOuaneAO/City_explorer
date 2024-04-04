@@ -19,18 +19,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CityController {
     private final CityService cityService;
-    @PostMapping("city")
-    public String save(@RequestBody CityAddRequest city) {
-        return cityService.save(city);
-    }
-    @GetMapping("cities")
-    public List<CityResponse> getAllCities() {
-        return cityService.getAll();
-    }
-    @DeleteMapping("cities/{id}")
-    public ResponseEntity<String> deleteCity(@PathVariable City cityId){
-        return cityService.deleteCity(cityId);
-    }
 
     @PostMapping("addcity")
     public  ResponseEntity<CityResponse> saveCity(@Valid @RequestParam("name") String name,
@@ -46,8 +34,18 @@ public class CityController {
                 .build();
         return ResponseEntity.ok(cityService.saveCity(cityAddRequest));
     }
-    @PostMapping("cities/{id}")
+    @GetMapping("cities")
+    public List<CityResponse> getAllCities() {
+        return cityService.getAll();
+    }
+    @GetMapping("cities/{id}")
     public ResponseEntity<City> getCityById(@PathVariable String id){
         return cityService.getCityById(id);
     }
+    @DeleteMapping("cities/{id}")
+    public ResponseEntity<String> deleteCity(@PathVariable City cityId){
+        return cityService.deleteCity(cityId);
+    }
+
+
 }

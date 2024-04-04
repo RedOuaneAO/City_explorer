@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface CityService {
-    String save(CityAddRequest city);
     City findById(Long id);
 
     List<CityResponse> getAll();

@@ -18,11 +18,6 @@ public class City {
     private String description;
     @OneToMany
     private List<Image> images;
-//    @OneToMany
-//    private List<Food> foodList;
-//    @OneToMany
-//    private List<Hotel> hotels;
-//    @OneToMany
-//    private List<Comment> comments;
+
 
 }

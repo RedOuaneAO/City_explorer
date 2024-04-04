@@ -3,6 +3,7 @@ package com.example.city_explorer.services;
 import com.example.city_explorer.demain.models.City;
 import com.example.city_explorer.demain.models.Hotel;
 import com.example.city_explorer.dto.hotel.HotelAddRequest;
+import com.example.city_explorer.dto.hotel.HotelResponse;
 
 import java.util.List;
 
@@ -12,9 +13,11 @@ public interface HotelService {
 
     String save(HotelAddRequest hotel);
 
-    List<Hotel> getAll();
+    List<HotelResponse> getAll();
 
     String deleteHotel(Hotel hotel);
 
-    List<Hotel> getHotelsByCity(Long cityId);
+    HotelResponse saveHotel(HotelAddRequest hotelAddRequest);
+
+//    List<Hotel> getHotelsByCity(Long cityId);
 }

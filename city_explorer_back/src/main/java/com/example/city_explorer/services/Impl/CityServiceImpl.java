@@ -22,16 +22,7 @@ public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;
     private final CityMapper cityMapper;
     private final ImageService imageService;
-    @Override
-    public String save(CityAddRequest city) {
-        City existCity= cityRepository.findByName(city.getName());
-        if(existCity != null){
-            return "city Already exist";
-        }
-        City city1 = cityMapper.dtoToCityEntity(city);
-        cityRepository.save(city1);
-        return "success";
-    }
+
     @Override
     public City findById(Long id) {
         return cityRepository.findById(id).orElseThrow(()->new RuntimeException("this city doesn't exist"));
@@ -49,14 +40,18 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public CityResponse saveCity(CityAddRequest cityRequest) {
+            City cityExist = cityRepository.findByName(cityRequest.getName());
+            if(cityExist != null){
+                throw new RuntimeException("This City is Already Exist");
+            }
             List<Image> images = new ArrayList<>();
             for (ImageDto imageDto:cityRequest.getImages()) {
                 Image image = imageService.uploadImage2(imageDto);
                 images.add(image);
             }
-            City city1 = cityMapper.dtoToCityEntity(cityRequest);
-            city1.setImages(images);
-        return cityMapper.entityToCityResponse(cityRepository.save(city1));
+            City city = cityMapper.dtoToCityEntity(cityRequest);
+            city.setImages(images);
+        return cityMapper.entityToCityResponse(cityRepository.save(city));
     }
 
     @Override

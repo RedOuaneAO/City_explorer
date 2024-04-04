@@ -26,7 +26,6 @@ public class FoodServiceImpl implements FoodService {
         Food food1 = Food.builder()
                 .name(food.getName())
                 .description(food.getDescription())
-                .city(city)
                 .build();
          foodRepository.save(food1);
          return "success";
@@ -39,12 +38,12 @@ public class FoodServiceImpl implements FoodService {
     public Food findById(Long id){
         return foodRepository.findById(id).orElseThrow(()->new RuntimeException("there is no food with this is "+ id));
     }
-    @Override
-    public List<Food> getFoodByCity(Long cityId) {
-        City city = cityService.findById(cityId);
-        List<Food> foodList = foodRepository.findByCity(city);
-        return foodList;
-    }
+//    @Override
+//    public List<Food> getFoodByCity(Long cityId) {
+//        City city = cityService.findById(cityId);
+//        List<Food> foodList = foodRepository.findByCity(city);
+//        return foodList;
+//    }
     @Override
     public List<Food> getAllFood(){
         return foodRepository.findAll();

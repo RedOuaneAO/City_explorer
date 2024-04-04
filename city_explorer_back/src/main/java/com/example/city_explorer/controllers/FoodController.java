@@ -23,9 +23,9 @@ public class FoodController {
     public List<Food> getAllFood(){
         return foodService.getAllFood();
     }
-    @GetMapping("cityFood/{id}")
-    public List<Food> getFoodByCity(@PathVariable Long id) {
-        return foodService.getFoodByCity(id);
-    }
+//    @GetMapping("cityFood/{id}")
+//    public List<Food> getFoodByCity(@PathVariable Long id) {
+//        return foodService.getFoodByCity(id);
+//    }
 
 }
