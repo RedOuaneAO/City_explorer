@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-city.component.css']
 })
 export class NewCityComponent {
-  selectedFiles: FileList | null = null;
+  selectedFiles!: FileList ;
   cityInfo: any = {};
   carouselImages: string[] = [];
   loading = false; 
@@ -27,7 +27,6 @@ export class NewCityComponent {
     formData.append('name', this.cityInfo.name);
     formData.append('description', this.cityInfo.description);
     this.cityService.addNewCity(formData).subscribe(data => {
-      console.log(data);
       Swal.fire({
         icon: "success",
         title: "The City has been saved",
@@ -37,12 +36,11 @@ export class NewCityComponent {
       this.loading = false;
       this.router.navigate(['/cities'])
     }, error => {
-      console.log(error);
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Something went wrong! Please try again",
-        timer: 1500
+        timer: 1700
       });
       this.loading = false; 
     });

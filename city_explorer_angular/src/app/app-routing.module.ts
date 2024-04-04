@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'signup' , component:SignupComponent},
   {path:'signin' , component:SigninComponent,canActivate:[SigninGuard]},
   {path:'cities' , component:TopPageComponent,canActivate:[AuthGuard]},
-  {path:'city' , component:CityComponent},
+  {path:'city/:id' , component:CityComponent},
   {path:'profile' , component:MyProfileComponent},
   {path:'editeProfile' , component:EditeProfileComponent,canActivate:[AuthGuard]},
   {path:'dashboard' , component:DashboardComponent},

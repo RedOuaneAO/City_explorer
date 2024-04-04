@@ -16,5 +16,8 @@ export class CityService {
   getAllCities():Observable<any>{
     return this.http.get(environment.apiURL+'cities')
   }
+  getCityById(cityId:number):Observable<any>{
+    return this.http.get(environment.apiURL+'cities/'+cityId)
+  }
 
 }
