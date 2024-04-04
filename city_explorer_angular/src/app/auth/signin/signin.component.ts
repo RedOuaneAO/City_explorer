@@ -17,6 +17,7 @@ export class SigninComponent {
      this.authService.authenticate(this.loginForm).subscribe((data)=>{
       console.log(data.token);
       localStorage.setItem("token", data.token)
+      localStorage.setItem("authorities", data.authorities);
       this.router.navigate(["/cities"])
      },(error)=>{
       console.log(error.error.message);

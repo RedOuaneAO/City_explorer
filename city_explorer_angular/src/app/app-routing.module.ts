@@ -12,6 +12,9 @@ import { EditeProfileComponent } from './account/edite-profile/edite-profile.com
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewCityComponent } from './city/new-city/new-city.component';
 import { AllFoodTopPageComponent } from './food/all-food-top-page/all-food-top-page.component';
+import { AllHotelsComponent } from './hotel/all-hotels/all-hotels.component';
+import { NewHotelComponent } from './hotel/new-hotel/new-hotel.component';
+import { adminGuard } from './helpers/guards/admin.guard';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -21,9 +24,14 @@ const routes: Routes = [
   {path:'city/:id' , component:CityComponent},
   {path:'profile' , component:MyProfileComponent},
   {path:'editeProfile' , component:EditeProfileComponent,canActivate:[AuthGuard]},
-  {path:'dashboard' , component:DashboardComponent},
+  {path:'dashboard' , component:DashboardComponent ,canActivate:[adminGuard],
+  data: {
+    roles: ['admin']
+  }},
   {path:'addCity' , component:NewCityComponent},
+  {path:'addHotel' , component:NewHotelComponent},
   {path:'food' , component:AllFoodTopPageComponent},
+  {path:'hotels' , component:AllHotelsComponent},
 ];
 
 @NgModule({

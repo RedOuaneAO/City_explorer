@@ -39,10 +39,10 @@ public class HotelController {
     public String deleteHotel(@RequestBody Hotel hotel) {
         return hotelService.deleteHotel(hotel);
     }
-//    @GetMapping("cityHotels/{id}")
-//    public List<Hotel> getHotelsByCity( @PathVariable Long id) {
-//        return hotelService.getHotelsByCity(id);
-//    }
+    @GetMapping("cityHotels/{id}")
+    public List<Hotel> getHotelsByCity( @PathVariable Long id) {
+        return hotelService.getHotelsByCity(id);
+    }
     @PostMapping("addHotel")
     public ResponseEntity<HotelResponse> saveCity(@Valid @RequestParam("name") String name,
                                                   @Valid @RequestParam("description") String description,

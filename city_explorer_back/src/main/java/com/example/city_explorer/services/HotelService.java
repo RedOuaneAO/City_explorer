@@ -19,5 +19,5 @@ public interface HotelService {
 
     HotelResponse saveHotel(HotelAddRequest hotelAddRequest);
 
-//    List<Hotel> getHotelsByCity(Long cityId);
+    List<Hotel> getHotelsByCity(Long cityId);
 }

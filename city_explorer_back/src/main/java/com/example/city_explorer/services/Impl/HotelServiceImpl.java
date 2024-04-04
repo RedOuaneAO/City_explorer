@@ -72,10 +72,10 @@ public class HotelServiceImpl implements HotelService {
         return hotelMapper.entityToHotelResponse(hotelRepository.save(hotel));
     }
 
-//    @Override
-//    public List<Hotel> getHotelsByCity(Long cityId) {
-//        City city = cityService.findById(cityId);
-//        List<Hotel> hotels = hotelRepository.findByCity(city);
-//        return hotels;
-//    }
+    @Override
+    public List<Hotel> getHotelsByCity(Long cityId) {
+        City city = cityService.findById(cityId);
+        List<Hotel> hotels = hotelRepository.findByCity(city);
+        return hotels;
+    }
 }

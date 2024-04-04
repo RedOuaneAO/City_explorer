@@ -33,6 +33,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewCityComponent } from './city/new-city/new-city.component';
 import { AllFoodComponent } from './food/all-food/all-food.component';
 import { AllFoodTopPageComponent } from './food/all-food-top-page/all-food-top-page.component';
+import { AllHotelsComponent } from './hotel/all-hotels/all-hotels.component';
+import { NewHotelComponent } from './hotel/new-hotel/new-hotel.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { AllFoodTopPageComponent } from './food/all-food-top-page/all-food-top-p
     NewCityComponent,
     AllFoodComponent,
     AllFoodTopPageComponent,
+    AllHotelsComponent,
+    NewHotelComponent,
   ],
   imports: [
     BrowserModule,

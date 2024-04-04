@@ -6,12 +6,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: city_explorer
-      MYSQL_USER: root
-      MYSQL_PASSWORD: admin
     ports:
-      - "3307:3306"
+      - "3306:3306"
 
-  spring-app:
+  app-back:
     build:
       context: ./city_explorer_back
       dockerfile: Dockerfile
@@ -22,13 +20,13 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/city_explorer?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_DATASOURCE_PASSWORD: root
 
-  spring-app-angular:
+  app-front:
     build:
       context: ./city_explorer_angular
       dockerfile: Dockerfile
     ports:
       - "4200:80"
     depends_on:
-      - spring-app
+      - app-back

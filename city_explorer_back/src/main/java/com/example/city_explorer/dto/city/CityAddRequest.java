@@ -19,9 +19,5 @@ public class CityAddRequest {
     @NotBlank(message = "the description cannot be blank.")
     private String description;
     private List<ImageDto> images;
-//    @OneToMany
-//    private List<Long> foodList;
-//    @OneToMany
-//    private List<Long> hotels;
 
 }

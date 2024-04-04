@@ -17,6 +17,8 @@ public class Comment {
     private Long id;
     private String description;
     @ManyToOne
+    private User createdBy;
+    @ManyToOne
     private City city;
     @ManyToOne
     private Food food;

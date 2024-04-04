@@ -1,7 +1,6 @@
 <div style="background: linear-gradient(180deg, rgb(47, 60, 98) 17%, rgb(255, 255, 255) 100%);">
-    <div class="container pt-5">
+    <div class="container pt-5" >
         <div class="card shadow my-4 position-relative mt-5">
-            <!-- Loading icon -->
             <div class="position-absolute top-50 start-50 translate-middle-x border p-3 shadow bg-white rounded" *ngIf="loading" style="z-index: 4;" >
                 <i class="fa fa-spinner fa-spin fs-2 "></i> 
             </div>
@@ -28,15 +27,24 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="card-body p-md-5 text-black">
-                        <form (ngSubmit)="addCity()" enctype="multipart/form-data">
-                            <h3 class="mb-5 text-uppercase">Add new City</h3>
+                        <form (ngSubmit)="addHotel()" enctype="multipart/form-data">
+                            <h3 class="mb-5 text-uppercase">Add new Hotel</h3>
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="cityName">Name</label>
-                                <input type="text" id="cityName" class="form-control" name="name" [(ngModel)]="cityInfo.name" placeholder="City Name">
+                                <input type="text" id="cityName" class="form-control" name="name" [(ngModel)]="hotelInfo.name" placeholder="City Name">
                             </div>
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="description">Description</label>
-                                <textarea type="text" id="description" class="form-control " name="description" [(ngModel)]="cityInfo.description" placeholder="Description" ></textarea>
+                                <textarea type="text" id="description" class="form-control " name="description" [(ngModel)]="hotelInfo.description" placeholder="Description" ></textarea>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="description">City</label>
+                                <select class="form-control" name="selectedCity" [(ngModel)]="selectedCity">
+                                        <option selected disabled>Select City</option>
+                                    @for (city of cities; track $index) {
+                                        <option value="{{city.id}}">{{city.name}}</option>
+                                    }
+                                </select>
                             </div>
                             <div class="form-outline mb-4">
                                 <input type="file" id="cityImages" name="images" class="form-control " placeholder="Images" multiple (change)="onFileSelected($event)" >

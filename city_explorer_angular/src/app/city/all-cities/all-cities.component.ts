@@ -7,7 +7,7 @@ import { CityService } from '../city.service';
   styleUrl: './all-cities.component.css'
 })
 export class AllCitiesComponent {
-  cities:any[] =[]; 
+  cities:any[] =[];   
   constructor(private cityService:CityService){}
   ngOnInit(){
     this.getAllCities()
